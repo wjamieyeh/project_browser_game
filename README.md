@@ -1,30 +1,37 @@
 # project1_browser_game
 
 ## Introduction:
-Tell us what the game is, how to play it, etc.
+A shooting game similar to duck hunt from Nintendo.
+Player will use the mouse with a target cursor to click on the moving object to score points.  (duck.. whatever)
 
 
 ## Technologies
+Javascript, JQuery, CSS and HTML.
+
 Tell us, on a high-level what technologies you are going to use to build the game
 Tell us how you plan on implementing the difficult parts
 
 
 ## MVP
-Tell us what you must have for the project to work
+* The target cursor to interact with the moving object.
+* scores points when each object is clicked
+* calculate total scores
 
 
 ## Goals
-Tell us what you would like to have after you reach your MVP
+create an effect similar to the dog picking up the dead duck after each shot.
 
 
 ## Stretch Goals
-Tell us what you would like to get to, if time were no issue. You should not expect to reach these.
+configure different scores base on how long it takes for the player to shoot the moving object
 
 
 ## Timeline
-What do you need to have done by Monday night? Tuesday night? Wednesday night? Thursday night?
-This should be detailed
-You do not have to stick with this timeline but should use it as a guide
+What do you need to have done by
+* Monday - I should have a canvas with the background field that has ground, grass, trees and a moving target cursor.
+* Tuesday - I should have at least 5 moving objects to shoot in 1 round and the object either explode or change image.
+* Wednesday - for each moving object shot - keep scoring and determine wins.
+* Thursday - set up round 2 if possible with faster moving object 
 
 
 ## Wireframes
