@@ -1,6 +1,16 @@
-/* .item {
-  background-color: teal;
-  width: 100px;
-  height: 100px;
-  margin: 300px auto;
-} */
+h1 {
+  text-align: center;
+  padding-top: 40px;
+  color: teal;
+}
+
+
+body {
+  font-family: 'Hi Melody', cursive;
+}
+
+#background {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: auto;
+}
