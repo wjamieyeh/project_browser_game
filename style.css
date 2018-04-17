@@ -48,8 +48,8 @@ body {
 } */
 
 #walkingCat1 {
-  position: relative;
-  bottom: 50px; left: 500px;
+  position: absolute;
+  bottom: 200px; left: 500px;
   width: 80px;
   height: 50px;
   /* animation-name: catWalk;

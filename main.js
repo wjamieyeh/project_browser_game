@@ -14,21 +14,52 @@ $(function () {
   });
 
   //have the flying object show up and start flying
-  // function startGame() {
-  //   console.log('startGame is working');
-  //
-  //   //create an img tag with flying bird object and insert after clicking start.
-  //   let $bird1 = $('<img>', {class: 'bird01', src: 'img/birdFlying1.gif'});
-  //   $('#start').after($bird1);
-  //   $bird1.css({"position": "relative", "z-index": "1", "bottom": "300px","left": "400px", "width": "50px", "height": "50px", "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
-  //
-  // }
+  // setInterval(function () {
+  //   console.log('interval1 is working');
+  // }, 5000)
 
-  for (let i = 0; i < 5; i++) {
-      let $bird = $('<img>', {src: 'img/birdFlying1.gif', width: '50', height: '50'});
-      $('#start').after($bird);
-      $bird.css({"position": "relative", "z-index": "1", "bottom": "300px","left": "400px", "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
+
+
+  function startGame() {
+    console.log('startGame is working');
+
+    //create an img tag with flying bird object and insert after clicking start.
+    let $bird1 = $('<img>', {id: 'bird1', src: 'img/birdFlying1.gif'});
+    $('#start').after($bird1);
+    $bird1.css({"position": "relative", "z-index": "2", "bottom": "300px","left": "400px", "width": "50px", "height": "50px", "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
+
+    // $('#bird1').click(function () {
+    //   $(this).animate({marginLeft: "500px"});
+    // })
+
+    setInterval(function () {
+      //console.log('interval2 is working');
+      $('#bird1').animate({"marginLeft": "400px"}, 1000, "swing", function (){
+        $(this).delay(500).animate({"marginLeft": "0px"}, 1000, "swing");
+
+      })
+    }, 500);
+
+
   }
+
+
+
+
+
+
+
+
+
+
+ //set interval
+ //create bird
+ //
+  // for (let i = 0; i < 5; i++) {
+  //     let $bird = $('<img>', {src: 'img/birdFlying1.gif', width: '50', height: '50'});
+  //     $('#start').after($bird);
+  //     $bird.css({"position": "relative", "z-index": "1", "bottom": "300px","left": "400px", "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
+  // }
 
 
 
