@@ -13,43 +13,54 @@ $(function () {
     $(this).css('color', '');
   });
 
-  //have the flying object show up and start flying
-  // setInterval(function () {
-  //   console.log('interval1 is working');
-  // }, 5000)
+  let $bird1 = $('<img>', {id: 'bird1', src: 'img/birdFlying1.gif'});
 
 
 
   function startGame() {
     console.log('startGame is working');
 
-    //create an img tag with flying bird object and insert after clicking start.
-    let $bird1 = $('<img>', {id: 'bird1', src: 'img/birdFlying1.gif'});
+    // let $bird1 = $('<img>', {id: 'bird1', src: 'img/birdFlying1.gif'});
+
     $('#start').after($bird1);
-    $bird1.css({"position": "relative", "z-index": "2", "bottom": "300px","left": "400px", "width": "50px", "height": "50px", "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
+    $bird1.css({"position": "relative", "z-index": "2", "bottom": "300px","left": "900px", "width": "50px", "height": "50px", "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
 
-    // $('#bird1').click(function () {
-    //   $(this).animate({marginLeft: "500px"});
-    // })
 
-    setInterval(function () {
-      //console.log('interval2 is working');
-      $('#bird1').animate({"marginLeft": "400px"}, 1000, "swing", function (){
-        $(this).delay(500).animate({"marginLeft": "0px"}, 1000, "swing");
+    // setInterval(function () {
+    //   console.log('interval2 is working');
+    // $('#bird1').animate({"marginLeft": "500px", "marginBottom": "200px"}, 10000, "swing");
+    //
+    // }, 500);
 
-      })
-    }, 500);
 
+//     setInterval(function () {
+//   console.log('interval2 is working');
+//   $('#bird1').animate({"marginLeft": "400px", "marginTop": "200px"}, 1000) function (){
+//     $(this).delay(500).animate({"marginLeft": "0px", "marginTop": "0"}, 1000);
+//
+//   })
+// }, 500);
+
+
+
+  setInterval(function () {
+    $bird1.animate({
+      "marginLeft": "400px",
+      "marginTop": "200px"
+    }, 5000)
+  }, 500)
+
+
+      $bird1.click( function () {
+        // $(this).attr('src', 'img/birdShot.png');
+        $bird1.explode();
+        // console.log($(this));
+        //$(this).css({"bottom": "100px"});
+        //need to add something to pause
+        //$(this).css('display', 'none');
+      });
 
   }
-
-
-
-
-
-
-
-
 
 
  //set interval
@@ -71,7 +82,9 @@ $(function () {
   //add event listener to click
 
 
-
+  // setInterval(function () {
+  //   console.log('interval1 is working');
+  // }, 5000)
 
 
 });
