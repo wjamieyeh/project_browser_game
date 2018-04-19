@@ -13,17 +13,65 @@ $(function () {
     $(this).css('color', '');
   });
 
-  let $bird1 = $('<img>', {id: 'bird1', src: 'img/birdFlying1.gif'});
+  // function getRandomInt(min, max) {
+  //   return Math.floor(Math.random() * (max - min + 1)) + min;
+  // };
 
+  // let canvasWidth = getRandomInt(250, 1150) + "px";
+  // let canvasHeight = getRandomInt(0, 500) + "px";
+  // console.log(`width is ${canvasWidth}`);
+
+  let $bird1 = $('<img>', {id: 'bird1', src: 'img/birdFlying1.gif', height: '50px', width: '50px'});
+  let $bird2 = $('<img>', {id: 'bird1', src: 'img/birdFlying1.gif', height: '50px', width: '50px'});
+
+  let $scoreText = $('<div>', {id: 'scoreText', text: 'Score:'});
+  let $score = $('<div>', {id: 'score', text: '0'});
 
 
   function startGame() {
-    console.log('startGame is working');
-
-    // let $bird1 = $('<img>', {id: 'bird1', src: 'img/birdFlying1.gif'});
+    //console.log('startGame is working');
+    let lives = 2;
+    let keepScore = 0;
+    // let x = Math.floor( Math.random() * 900 );
+    // console.log(x);
 
     $('#start').after($bird1);
-    $bird1.css({"position": "relative", "z-index": "2", "bottom": "300px","left": "900px", "width": "50px", "height": "50px", "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
+    $bird1.css({"position": "relative", "z-index": "2", "bottom": "300px", "left": "1150px", "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
+    // $bird1.css(`{"bottom": "${canvasHeight}"}`);
+
+    $('#start').after($scoreText);
+    $scoreText.css({"position": "absolute", "z-index": "2", "top": "170px","left": "300px", "font-size": "2em"});
+
+    $('#scoreText').after($score);
+    $score.css({"position": "absolute", "z-index": "2", "top": "173px","left": "370px", "font-size": "2em"});
+
+
+    $bird1.animate({"marginLeft": "-1180px", "opacity": "0"}, 10000, function () {
+      birdLeftEnd = $(this).css("marginLeft");
+
+            // alert("bird missed");
+            lives = lives - 1;
+            console.log(lives);
+    });
+
+
+
+    $bird1.click( function () {
+      ifClick = true;
+      $(this).attr('src', 'img/birdShot.png');
+      $(this).stop().animate({"marginTop": "200px"});
+      keepScore+=100;
+      $('#score').text(`${keepScore}`);
+
+    });
+
+      let ifClick;
+
+      // if (ifClick !== true && birdLeftEnd === "-1180px") {
+      //   alert("bird missed");
+      // }
+
+  }
 
 
     // setInterval(function () {
@@ -42,49 +90,27 @@ $(function () {
 // }, 500);
 
 
-
-  setInterval(function () {
-    $bird1.animate({
-      "marginLeft": "400px",
-      "marginTop": "200px"
-    }, 5000)
-  }, 500)
+  // let $backWidth = $('#background').width();
+  // let $backHeight = $('#background').height();
 
 
-      $bird1.click( function () {
-        // $(this).attr('src', 'img/birdShot.png');
-        $bird1.explode();
-        // console.log($(this));
-        //$(this).css({"bottom": "100px"});
-        //need to add something to pause
-        //$(this).css('display', 'none');
-      });
 
-  }
+  // let Bird = function(height, width) {
+  //   this.height = height;
+  //   this.width = width;
+  // };
+  //
+  // let birdArray = [];
 
-
- //set interval
- //create bird
- //
+//for each iteration of the for loop, create a new instance of a bird with randomized height width (starting position)
   // for (let i = 0; i < 5; i++) {
-  //     let $bird = $('<img>', {src: 'img/birdFlying1.gif', width: '50', height: '50'});
-  //     $('#start').after($bird);
-  //     $bird.css({"position": "relative", "z-index": "1", "bottom": "300px","left": "400px", "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
+  //     let $duck = $('<img>', {src: 'img/birdFlying1.gif', width: '50', height: '50'});
+  //
+  //     //how to get the width of the background
+  //     //randomBottom = Math.random() * (max - min)
+  //     $('#start').after($duck);
+  //     $duck.css({"position": "relative", "z-index": "1", "bottom": "300px","left": "400px", "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
   // }
-
-
-
-
-  // function createBird () {
-  //   console.log('createBird is working');
-  //   let
-  // }
-  //add event listener to click
-
-
-  // setInterval(function () {
-  //   console.log('interval1 is working');
-  // }, 5000)
 
 
 });
