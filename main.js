@@ -3,6 +3,7 @@ $(function () {
 //click to start the Scene
   $('#start').click(function () {
     $(this).css('z-index', '0');
+    $('h1').addClass('animated rubberBand');
     startGame();
   });
 
@@ -15,11 +16,35 @@ $(function () {
 
 //creating bird1 and bird2 elements
   let $bird1 = $('<img>', {id: 'bird1', src: 'img/birdFlying1.gif', height: '50px', width: '50px'});
+  $('#start').after($bird1);
+  $bird1.css({"position": "relative",
+              "z-index": "1",
+              "bottom": "300px",
+              "left": "1150px",
+              "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
+
   let $bird2 = $('<img>', {id: 'bird2', src: 'img/birdFlying1.gif', height: '50px', width: '50px'});
+  $('#start').after($bird2);
+  $bird2.css({"position": "absolute",
+              "z-index": "1",
+              "bottom": "200px",
+              "left": "1150px",
+              "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
+
+  let $bird3 = $('<img>', {id: 'bird3', src: 'img/birdFlying1.gif', height: '50px', width: '50px'});
+  $('#start').after($bird3);
+  $bird3.css({"position": "absolute",
+              "z-index": "1",
+              "bottom": "400px",
+              "left": "1150px",
+              "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
+
+
+
   var birdSound = new Audio("birdChirp.mp3");
   const shotSound = new Audio("gunShot.mp3");
 
-//create variables for score element, score point element, initial lives
+  //create variables for score element, score point element, initial lives
   let $scoreText = $('<div>', {id: 'scoreText', text: 'Score:'});
   let $score = $('<div>', {id: 'score', text: '0'});
   let lives = 2;
@@ -34,8 +59,8 @@ $(function () {
   $score.css({"position": "absolute", "z-index": "2", "top": "173px","left": "370px", "font-size": "2em"});
 
 //function that makes the bird move, detect missed bird, minus lives
-  function birdAnimate(speed) {
-      $bird1.animate({"marginLeft": "-900px", "opacity": "0"}, speed, function () {
+  function birdAnimate(bird, speed) {
+      bird.animate({"marginLeft": "-900px", "opacity": "0"}, speed, function () {
       birdLeftEnd = $(this).css("marginLeft");
       alert("bird missed");
       lives--;
@@ -43,28 +68,56 @@ $(function () {
     });
   }
 
+//i need to create a bird with the same starting position  with the following attributes.
+//create 5 item array , loop through the array with different speed
+    // let createBird = function() {
+    //   this.height = 50;
+    //   this.width = 50;
+    // this.src = 'img/birdFlying1.gif';
+    // this.position = 'relative';
+    // this.z-index = 2;
+    // this.bottom = 300;
+    // this.left = 1150;
+  //};
+
 //function when bird is clicked - create ifClick flag, changes img of the bird, and stops animation
 // add 100 points, update scoring on screen
-  function clickAction () {
-    $bird1.click( function () {
-      //ifClicked = true;
+  function clickAction (bird) {
+    bird.click(function () {
       $(this).data('clicked', true);
 
-      if ($('#bird1').data('clicked')) {
+      if ($(this).data('clicked')) {
         shotSound.play();
         $(this).attr('src', 'img/birdShot.png');
-        $(this).css('transform', 'rotate(60deg)');
+        $(this).css('transform', 'rotate(75deg)');
         $(this).stop().animate({"marginTop": "200px"}, 1000).fadeOut(); //and then disappear..
         keepScore+=100;
         $('#score').text(`${keepScore}`);
-      } else {
-        // $('#start').after($bird2);
-        // $bird2.css({"position": "relative", "z-index": "2", "bottom": "300px", "left": "1150px", "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
-        // $bird2.animate(10000);
-      }
+        $('#score').addClass('animated tada');
+        $('#score').css('color', 'red');
+        //$(this).data('clicked', false);
+      } //else {
+        //$('#start').after($bird2);
+        //$bird2.css({"position": "relative", "z-index": "2", "bottom": "300px", "left": "1150px", "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
+        //$bird2.animate()
+      //}
     });
   };
 
+
+  // function clickAction (bird) {
+  //   $('#bird').click(function () {
+  //     $(this).data('clicked', true);
+  //     shotSound.play();
+  //     $(this).attr('src', 'img/birdShot.png');
+  //     $(this).css('transform', 'rotate(60deg)');
+  //     $(this).stop().animate({"marginTop": "200px"}, 1000).fadeOut(); //and then disappear..
+  //     keepScore+=100;
+  //     $('#score').text(`${keepScore}`);
+  //     $('#score').addClass('animated tada');
+  //     $('#score').css('color', 'red');
+  //   });
+  // }
 
 //function to initiate game
   function startGame() {
@@ -75,16 +128,16 @@ $(function () {
     birdSound.loop = true;
     birdSound.play();
 
-    $('#start').after($bird1);
-    $bird1.css({"position": "relative", "z-index": "2", "bottom": "300px", "left": "1150px", "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
-    // $bird1.css(`{"bottom": "${canvasHeight}"}`);
+    birdAnimate($bird1, 10000);
+    birdAnimate($bird2, 10000);
 
-
-    birdAnimate(10000);
-    clickAction();
-
+    clickAction($bird1);
+    clickAction($bird2);
   }
 
+
+
+    // $bird1.css(`{"bottom": "${canvasHeight}"}`);
     // if (ifClick !== true && birdLeftEnd === "-1180px") {
     //   alert("bird missed");
     // }
