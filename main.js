@@ -85,14 +85,17 @@ $(function () {
       console.log(lives);
       alert("bird missed");
       if (lives < 1) {
-        $('#round').text('You were too slow...Try Again!');
+        $('#round').text('You were too slow...Click Me To Try Again!');
         $('#round').css('left', '600px');
+        $('#round').click(function () {
+          window.location = 'https://git.generalassemb.ly/pages/yehw002/project1_browser_game/';
+        })
       }
     });
   }
 
 //let currentBird;
-  //function when bird is clicked - create ifClick flag, changes img of the bird, and stops animation
+  //function when bird is clicked, changes img of the bird, and stops animation
   // add 100 points, update scoring on screen
   function clickAction (bird) {
     bird.click(function () {
