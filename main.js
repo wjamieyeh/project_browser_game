@@ -50,7 +50,7 @@ $(function () {
               "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
 
   var birdSound = new Audio("birdChirp.mp3");
-  var shotSound = new Audio("canOpen.mp3");
+  var shotSound = new Audio("birdScreech.mp3");
   //var shotSound = new Audio("gunShot.mp3");
 
 
@@ -88,9 +88,6 @@ $(function () {
         $('#round').text('You were too slow...Try Again!');
         $('#round').css('left', '600px');
       }
-
-
-      //console.log(lives);
     });
   }
 
@@ -102,7 +99,8 @@ $(function () {
       $(this).data('clicked', true);
 
       if ($(this).data('clicked')) {
-        //console.log($(this));
+
+        shotSound.src = "birdScreech.mp3";
         shotSound.play();
         $(this).attr('src', 'img/birdShot.png');
         $(this).css('transform', 'rotate(75deg)');
@@ -131,7 +129,6 @@ $(function () {
     //not looping bird sound
     //birdSound.loop = true;
 
-
       if (roundCount === 1) {
         birdSound.play();
         birdAnimate($bird1, 15000);
@@ -140,18 +137,15 @@ $(function () {
       }
 
       if (roundCount === 2) {
+        birdSound.src = "birdChirp.mp3";
         birdSound.play();
         $('#start').after($bird2);
         $('#start').after($bird3);
         birdAnimate($bird2, 10000);
         clickAction($bird2);
-        birdAnimate($bird3,  6000);
+        birdAnimate($bird3,  7000);
         clickAction($bird3);
         //roundCount++;
       }
-
-      // if (lives < 0) {
-      //   $('#round').text('You Lost... Try again');
-      // }
   };
 });
