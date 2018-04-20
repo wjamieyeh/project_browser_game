@@ -26,15 +26,7 @@ $(function () {
               "left": "700px",
               "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
 
-  // let $nextButton = $('<div>', {id: 'nextButton', text: 'Next', height: '50px', width: '100px'});
-  // $('#bird1').after($nextButton);
-  //             $round.css({"position": "relative",
-  //                         "z-index": "1",
-  //                         "font-size": "30px",
-  //                         "bottom": "550px",
-  //                         "left": "800px"});
-
-  //creating bird1 and bird2 elements
+  //creating bird1, bird2, and bird3
   let $bird1 = $('<img>', {id: 'bird1', src: 'img/birdFlying1.gif', height: '50px', width: '50px'});
   $('#start').after($bird1);
   $bird1.css({"position": "relative",
@@ -64,6 +56,8 @@ $(function () {
   //create variables for score element, score point element, initial lives
   let $scoreText = $('<div>', {id: 'scoreText', text: 'Score:'});
   let $score = $('<div>', {id: 'score', text: '0'});
+  // let $liveText = $('<div>', {id: 'liveText', text: 'lives:'});
+  // let $liveCount = $('<div>', {id: 'liveCount', text: '2'});
   let lives = 2;
   let keepScore = 0;
   let roundCount = 1;
@@ -76,12 +70,19 @@ $(function () {
   $('#scoreText').after($score);
   $score.css({"position": "absolute", "z-index": "2", "top": "173px","left": "370px", "font-size": "2em"});
 
+  // $('#score').after($liveText);
+  // $scoreText.css({"position": "absolute", "z-index": "2", "top": "170px","left": "300px", "font-size": "2em"});
+  //
+  // $('#liveText').after($liveCount);
+  // $score.css({"position": "absolute", "z-index": "2", "top": "173px","left": "370px", "font-size": "2em"});
+
   //function that makes the bird move, detect missed bird, minus lives
   function birdAnimate(bird, speed) {
       bird.animate({"marginLeft": "-900px", "opacity": "0"}, speed, function () {
       birdLeftEnd = $(this).css("marginLeft");
       alert("bird missed");
       lives--;
+      console.log(lives);
       //console.log(lives);
     });
   }
@@ -114,8 +115,6 @@ let currentBird;
     });
   };
 
-//add a hidden button for next round, and unhide it when bird1 is clicked and round = 2
-
 //function to initiate game
   function startGame() {
 
@@ -140,81 +139,8 @@ let currentBird;
         //roundCount++;
       }
 
-
-    // if (roundCount === 2) {
-    //   birdAnimate($bird2, 10000);
-    //   clickAction($bird2);
-    //   roundCount++;
-    // };
-
-
-
-    // birdAnimate($bird1, 10000);
-    // birdAnimate($bird2, 10000);
-
-    //clickAction($bird1);
-    //clickAction($bird2);
+      // if (lives === 0) {
+      //   $('#round').text('You Lost... Try again');
+      // }
   };
-
 });
-
-    // $bird1.css(`{"bottom": "${canvasHeight}"}`);
-    // if (ifClick !== true && birdLeftEnd === "-1180px") {
-    //   alert("bird missed");
-    // }
-
-    // setInterval(function () {
-    //   console.log('interval2 is working');
-    // $('#bird1').animate({"marginLeft": "500px", "marginBottom": "200px"}, 10000, "swing");
-    //
-    // }, 500);
-
-
-//     setInterval(function () {
-//   console.log('interval2 is working');
-//   $('#bird1').animate({"marginLeft": "400px", "marginTop": "200px"}, 1000) function (){
-//     $(this).delay(500).animate({"marginLeft": "0px", "marginTop": "0"}, 1000);
-//
-//   })
-// }, 500);
-
-  // let $backWidth = $('#background').width();
-  // let $backHeight = $('#background').height();
-
-
-  // let Bird = function(height, width) {
-  //   this.height = height;
-  //   this.width = width;
-  // };
-  //
-  // let birdArray = [];
-
-//for each iteration of the for loop, create a new instance of a bird with randomized height width (starting position)
-  // for (let i = 0; i < 5; i++) {
-  //     let $duck = $('<img>', {src: 'img/birdFlying1.gif', width: '50', height: '50'});
-  //
-  //     //how to get the width of the background
-  //     //randomBottom = Math.random() * (max - min)
-  //     $('#start').after($duck);
-  //     $duck.css({"position": "relative", "z-index": "1", "bottom": "300px","left": "400px", "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
-  // }
-
-
-    // function getRandomInt(min, max) {
-    //   return Math.floor(Math.random() * (max - min + 1)) + min;
-    // };
-
-    // let canvasWidth = getRandomInt(250, 1150) + "px";
-    // let canvasHeight = getRandomInt(0, 500) + "px";
-    // console.log(`width is ${canvasWidth}`);
-    //i need to create a bird with the same starting position  with the following attributes.
-    //create 5 item array , loop through the array with different speed
-        // let createBird = function() {
-        //   this.height = 50;
-        //   this.width = 50;
-        // this.src = 'img/birdFlying1.gif';
-        // this.position = 'relative';
-        // this.z-index = 2;
-        // this.bottom = 300;
-        // this.left = 1150;
-      //};
