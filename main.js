@@ -16,7 +16,7 @@ $(function () {
   });
 
   //Round 1
-  let $round = $('<div>', {id: 'round', text: 'Round 1', height: '50px', width: '100px'});
+  let $round = $('<div>', {id: 'round', text: 'Round 1', height: '50px', width: '300px'});
   $('#start').after($round);
   $round.css({"position": "absolute",
               "z-index": "1",
@@ -31,26 +31,27 @@ $(function () {
   $('#start').after($bird1);
   $bird1.css({"position": "relative",
               "z-index": "1",
-              "bottom": "300px",
+              "bottom": "350px",
               "left": "1150px",
               "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
 
   let $bird2 = $('<img>', {id: 'bird2', src: 'img/birdFlying1.gif', height: '50px', width: '50px'});
-  $bird2.css({"position": "absolute",
+  $bird2.css({"position": "relative",
               "z-index": "1",
-              "bottom": "300px",
+              "bottom": "200px",
               "left": "1150px",
               "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
 
   let $bird3 = $('<img>', {id: 'bird3', src: 'img/birdFlying1.gif', height: '50px', width: '50px'});
-  $bird3.css({"position": "absolute",
+  $bird3.css({"position": "relative",
               "z-index": "1",
-              "bottom": "500px",
+              "bottom": "400px",
               "left": "1150px",
               "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
 
   var birdSound = new Audio("birdChirp.mp3");
-  var shotSound = new Audio("gunShot.mp3");
+  var shotSound = new Audio("canOpen.mp3");
+  //var shotSound = new Audio("gunShot.mp3");
 
 
   //create variables for score element, score point element, initial lives
@@ -79,15 +80,21 @@ $(function () {
   //function that makes the bird move, detect missed bird, minus lives
   function birdAnimate(bird, speed) {
       bird.animate({"marginLeft": "-900px", "opacity": "0"}, speed, function () {
-      birdLeftEnd = $(this).css("marginLeft");
-      alert("bird missed");
+      //birdLeftEnd = $(this).css("marginLeft");
       lives--;
       console.log(lives);
+      alert("bird missed");
+      if (lives < 1) {
+        $('#round').text('You were too slow...Try Again!');
+        $('#round').css('left', '600px');
+      }
+
+
       //console.log(lives);
     });
   }
 
-let currentBird;
+//let currentBird;
   //function when bird is clicked - create ifClick flag, changes img of the bird, and stops animation
   // add 100 points, update scoring on screen
   function clickAction (bird) {
@@ -95,6 +102,7 @@ let currentBird;
       $(this).data('clicked', true);
 
       if ($(this).data('clicked')) {
+        //console.log($(this));
         shotSound.play();
         $(this).attr('src', 'img/birdShot.png');
         $(this).css('transform', 'rotate(75deg)');
@@ -121,15 +129,18 @@ let currentBird;
     //keepScore = 0;
 
     //not looping bird sound
-    birdSound.loop = true;
-    birdSound.play();
+    //birdSound.loop = true;
+
 
       if (roundCount === 1) {
-          birdAnimate($bird1, 15000);
-          clickAction($bird1);
+        birdSound.play();
+        birdAnimate($bird1, 15000);
+        clickAction($bird1);
+        $bird1.data('clicked', true);
       }
 
       if (roundCount === 2) {
+        birdSound.play();
         $('#start').after($bird2);
         $('#start').after($bird3);
         birdAnimate($bird2, 10000);
@@ -139,7 +150,7 @@ let currentBird;
         //roundCount++;
       }
 
-      // if (lives === 0) {
+      // if (lives < 0) {
       //   $('#round').text('You Lost... Try again');
       // }
   };
