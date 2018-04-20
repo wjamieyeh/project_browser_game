@@ -136,7 +136,7 @@ $(function () {
         birdSound.play();
         birdAnimate($bird1, 15000);
         clickAction($bird1);
-        $bird1.data('clicked', true);
+        $bird1.data('clicked', false);
       }
 
       if (roundCount === 2) {
@@ -145,7 +145,7 @@ $(function () {
         $('#start').after($bird3);
         birdAnimate($bird2, 10000);
         clickAction($bird2);
-        birdAnimate($bird3,  5000);
+        birdAnimate($bird3,  6000);
         clickAction($bird3);
         //roundCount++;
       }
