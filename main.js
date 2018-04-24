@@ -50,8 +50,8 @@ $(function () {
               "cursor": "url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto"});
 
   var birdSound = new Audio("birdChirp.mp3");
-  var shotSound = new Audio("birdScreech.mp3");
-  //var shotSound = new Audio("gunShot.mp3");
+  //var shotSound = new Audio("birdScreech.mp3");
+  var shotSound = new Audio("gunShot.mp3");
 
 
   //create variables for score element, score point element, initial lives
@@ -103,7 +103,7 @@ $(function () {
 
       if ($(this).data('clicked')) {
 
-        shotSound.src = "birdScreech.mp3";
+        shotSound.src = "gunShot.mp3";
         shotSound.play();
         $(this).attr('src', 'img/birdShot.png');
         $(this).css('transform', 'rotate(75deg)');
