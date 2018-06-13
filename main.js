@@ -73,6 +73,7 @@ $(function () {
   //function that makes the bird move, detect missed bird, minus lives
   function birdAnimate(bird, speed) {
       bird.animate({"marginLeft": "-900px", "opacity": "0"}, speed, function () {
+      //birdLeftEnd = $(this).css("marginLeft");
       lives--;
       alert("bird missed");
       if (lives < 1) {
@@ -118,6 +119,14 @@ $(function () {
               $('#round').addClass('animated tada'); startGame()}, 1000);
               roundCount++;
         };
+
+        if ($(this).attr('id') === $bird3.attr('id')) {
+          setTimeout (function () {
+            alert('You Passed Round 3!');
+              $('#round').text('You are really good at this!');
+              $('#round').addClass('animated tada'); startGame()}, 1000);
+              roundCount++;
+        };
       };
     });
   };
@@ -138,6 +147,14 @@ $(function () {
         $('#start').after($bird2);
         birdAnimate($bird2, 10000);
         clickAction($bird2);
+      }
+
+      if (roundCount === 3) {
+        birdSound.src = "sound/birdChirp.mp3";
+        birdSound.play();
+        $('#start').after($bird3);
+        birdAnimate($bird3, 5000);
+        clickAction($bird3);
       }
   };
 });

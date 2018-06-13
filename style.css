@@ -8,9 +8,10 @@ body {
   font-family: 'Hi Melody', cursive;
 }
 
+
 #background {
   position: absolute;
-  top: 0; bottom: 2px; left: 0; right: 0;
+  top: 25px; bottom: 2px; left: 0; right: 0;
   margin: auto;
   cursor: url('https://cdn4.iconfinder.com/data/icons/miscellaneous-icons-3/200/pointer_cross_aim-32.png'), auto;
   z-index: 0;
@@ -18,7 +19,7 @@ body {
 
 #start {
   position: relative;
-  top: 25px; bottom: 0; left: 0; right: 0;
+  top: 0; bottom: 0; left: 0; right: 0;
   margin: auto;
   width: 1400px;
   height: 506px;
