@@ -73,10 +73,10 @@ $(function () {
   //function that makes the bird move, detect missed bird, minus lives
   function birdAnimate(bird, speed) {
       bird.animate({"marginLeft": "-900px", "opacity": "0"}, speed, function () {
-      //birdLeftEnd = $(this).css("marginLeft");
       lives--;
       alert("bird missed");
-      if (lives < 1) {
+      console.log(lives);
+      if (lives <= 1) {
         $('#round').text('You were too slow...Click Me To Try Again!');
         $('#round').css('left', '600px');
         $('#round').click(function () {
