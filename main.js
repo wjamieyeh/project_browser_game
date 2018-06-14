@@ -51,7 +51,8 @@ $(function () {
 
 
   var birdSound = new Audio("sound/birdChirp.mp3");
-  var shotSound = new Audio("sound/gunShot.mp3");
+  // var shotSound = new Audio("sound/gunShot.mp3");
+  var shotSound = new Audio("sound/txt.mp3");
 
 
   //create variables for score element, score point element, initial lives
@@ -94,7 +95,9 @@ $(function () {
 
       if ($(this).data('clicked')) {
 
-        shotSound.src = "sound/gunShot.mp3";
+        // shotSound.src = "sound/gunShot.mp3";
+        shotSound.src = "sound/txt.mp3";
+        shotSound.play();
         shotSound.play();
         $(this).attr('src', 'img/birdShot.png');
         $(this).css('transform', 'rotate(75deg)');
